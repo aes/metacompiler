@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import re
 
 TOKEN = re.compile(r"('[^']*'|\S+)")
@@ -125,19 +126,27 @@ def munge_asm(asm):
     return [
         tokenize(line) if line[0].isspace() else ['LABEL', line]
         for line in asm.split("\n")
-        if line
+        if line and not line.lstrip().startswith("#")
     ]
 
 
-def main():
-    with open("meta.asm", "r") as fh:
-        code = munge_asm(fh.read())
-    with open("meta.cd", "r") as fh:
-        src = fh.read()
+def main(args):
+    try:
+        with open(args[1], "r") as fh:
+            code = munge_asm(fh.read())
+        src = "meta.cd" if len(args) < 3 else args[2]
+        with open(src, "r") as fh:
+            src = fh.read()
+    except IOError:
+        print("""\
+        Usage: python3 meta.py <order code file> <compiler-description>
+        """)
+        return 5
 
     cs = Machine(code, src)
     cs.run()
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    sys.exit(main(tuple(sys.argv)) or 0)
