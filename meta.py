@@ -1,4 +1,3 @@
-# http://www.bayfronttechnologies.com/mc_workshop.html
 
 class Machine:
     def __init__(self, code, src):
