@@ -134,7 +134,7 @@ def main(args):
     try:
         with open(args[1], "r") as fh:
             code = munge_asm(fh.read())
-        src = "meta.cd" if len(args) < 3 else args[2]
+        src = "meta.g" if len(args) < 3 else args[2]
         with open(src, "r") as fh:
             src = fh.read()
             if src.startswith("#!"):
