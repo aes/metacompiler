@@ -80,16 +80,16 @@ class Machine:
         self.output += self.token
 
     def gn1(self):
-        self.gensym = self.gensym + 1
         if not self.stack[-3]:
+            self.gensym = self.gensym + 1
             self.stack[-3] = self.gensym
-        self.output += "L{}".format(self.gensym)
+        self.output += "L{}".format(self.stack[-3])
 
     def gn2(self):
-        self.gensym = self.gensym + 1
         if not self.stack[-2]:
+            self.gensym = self.gensym + 1
             self.stack[-2] = self.gensym
-        self.output += "L{}".format(self.gensym)
+        self.output += "L{}".format(self.stack[-2])
 
     def lb(self):
         self.output = self.output.lstrip()
