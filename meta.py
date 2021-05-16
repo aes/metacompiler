@@ -137,6 +137,8 @@ def main(args):
         src = "meta.cd" if len(args) < 3 else args[2]
         with open(src, "r") as fh:
             src = fh.read()
+            if src.startswith("#!"):
+                src = src.split('\n', 1)[1]
     except IOError:
         print("""\
         Usage: python3 meta.py <order code file> <compiler-description>

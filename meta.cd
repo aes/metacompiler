@@ -1,3 +1,4 @@
+#!./meta.py meta.asm
 .SYNTAX PROGRAM
 
 PROGRAM
