@@ -2,7 +2,7 @@
 import pathlib
 import re
 
-TOKEN = re.compile(r"('[^']*'|\S+)")
+TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 
 
 def tokenize(src):
