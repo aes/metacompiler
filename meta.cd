@@ -5,21 +5,21 @@ PROGRAM
   = '.SYNTAX' .ID .OUT ( 'ADR ' * )
     $ ST
     '.END' .OUT ( 'END' )
-  .,
+  ;
 
 ST
-  = .ID .LABEL * '=' EX1 ( '.,' / ';' ) .OUT ( 'R' )
-  .,
+  = .ID .LABEL * '=' EX1 ';' .OUT ( 'R' )
+  ;
 
 EX1
   = EX2 $ ( '/' .OUT ( 'BT ' *1 ) EX2 ) .LABEL *1
-  .,
+  ;
 
 EX2
   = ( EX3 .OUT ( 'BF ' *1 ) / OUTPUT )
     $ ( EX3 .OUT ( 'BE' ) / OUTPUT )
     .LABEL *1
-  .,
+  ;
 
 EX3
   = .ID       .OUT ( 'CLL ' * )
@@ -30,7 +30,7 @@ EX3
   / '(' EX1 ')'
   / '.EMPTY'  .OUT ( 'SET' )
   / '$' .LABEL *1 EX3 .OUT ( 'BT ' *1 ) .OUT ( 'SET' )
-  .,
+  ;
 
 OUTPUT
   = (
@@ -38,13 +38,13 @@ OUTPUT
       / '.LABEL' .OUT ( 'LB' ) OUT1
     )
     .OUT ( 'OUT' )
-  .,
+  ;
 
 OUT1
   = '*1'    .OUT ( 'GN1' )
   / '*2'    .OUT ( 'GN2' )
   / '*'     .OUT ( 'CI' )
   / .STRING .OUT ( 'CL ' * )
-  .,
+  ;
 
 .END
