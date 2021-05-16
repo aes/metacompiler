@@ -1,3 +1,4 @@
+#!./meta.py
     ADR PROGRAM
 PROGRAM
     TST '.SYNTAX'
