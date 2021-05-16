@@ -380,6 +380,9 @@ OUT1 = '*1'    .OUT ( 'GN1' )
 
 
 def main():
+    with open("meta.asm", "r") as fh:
+        code = munge_asm(fh.read())
+
     cs = Machine(code, src)
     cs.run()
 
