@@ -17,7 +17,7 @@ class Machine:
         self.switch = False
         self.token = ""
         self.gensym = 0
-        self.output = "\t"
+        self.output = "    "
 
         self.labels = {
             line[1]: i
@@ -97,7 +97,7 @@ class Machine:
 
     def out(self):
         print(self.output)
-        self.output = "\t"
+        self.output = "    "
 
     def label(self, _arg):
         pass
