@@ -11,9 +11,29 @@ def tokenize(src):
     return TOKEN.findall(src)
 
 
+def assemble(asm):
+    labels = {}
+    code = []
+    i = 0
+    for line in asm.split("\n"):
+        line = line.split("#", 1)[0]
+        if not line[:1].isspace():
+            labels[line] = i
+        else:
+            line = tokenize(line)
+            code.append(line)
+            i += 1
+
+    for line in code:
+        if line[0] in ("ADR", "B", "BT", "BF", "CLL"):
+            line[1] = labels.get(line[1])
+
+    return tuple(tuple(line) for line in code)
+
+
 class Machine:
     def __init__(self, code, src, file=None):
-        self.code = munge_asm(code)
+        self.code = assemble(code)
         self.src = tokenize(src)
         self.file = file
 
@@ -22,12 +42,6 @@ class Machine:
         self.token = ""
         self.gensym = 0
         self.output = "    "
-
-        self.labels = {
-            line[1]: i
-            for i, line in enumerate(self.code)
-            if line[0] == "LABEL"
-        }
 
         self.pc = 0
         self.stack = [None, None, -1]
@@ -54,7 +68,7 @@ class Machine:
 
     def cll(self, arg):
         self.stack.extend([None, None, self.pc])
-        self.pc = self.lookup(arg)
+        self.pc = arg
 
     def r(self):
         self.pc = self.stack[-1]
@@ -64,15 +78,15 @@ class Machine:
         self.switch = True
 
     def b(self, arg):
-        self.pc = self.lookup(arg)
+        self.pc = arg
 
     def bt(self, arg):
         if self.switch:
-            self.pc = self.lookup(arg)
+            self.pc = arg
 
     def bf(self, arg):
         if not self.switch:
-            self.pc = self.lookup(arg)
+            self.pc = arg
 
     def be(self):
         if not self.switch:
@@ -107,16 +121,10 @@ class Machine:
         pass
 
     def adr(self, arg):
-        if arg.isnumeric():
-            self.pc = int(arg)
-        else:
-            self.pc = self.lookup(arg)
+        self.pc = arg
 
     def end(self):
         return True
-
-    def lookup(self, arg):
-        return self.labels[arg]
 
     def run(self):
         while 0 <= self.pc < len(self.code):
@@ -124,14 +132,6 @@ class Machine:
             # print(f'(self.pc, line) = {(self.pc, line)!r}')
             self.pc += 1
             getattr(self, line[0].lower())(*line[1:])
-
-
-def munge_asm(asm):
-    return [
-        tokenize(line) if line[0].isspace() else ['LABEL', line]
-        for line in asm.split("\n")
-        if line and not line.lstrip().startswith("#")
-    ]
 
 
 def main(args):
