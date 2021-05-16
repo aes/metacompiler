@@ -7,7 +7,7 @@ TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 
 def tokenize(src):
     if src.startswith("#"):
-        src = src.split('\n', 1)[1]
+        src = src.split("\n", 1)[1]
     return TOKEN.findall(src)
 
 
@@ -139,15 +139,18 @@ def main(args):
         code = pathlib.Path(args[1]).read_text()
         src = pathlib.Path("meta.g" if len(args) < 3 else args[2]).read_text()
     except IOError:
-        print("""\
+        print(
+            """\
         Usage: python3 meta.py <order code file> <compiler-description>
-        """)
+        """
+        )
         return 5
 
     cs = Machine(code, src)
     cs.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
+
     sys.exit(main(tuple(sys.argv)) or 0)
