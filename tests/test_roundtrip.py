@@ -2,7 +2,7 @@ import unittest
 
 import io
 
-from meta import Machine, munge_asm
+from meta import Machine
 
 
 def load(path):
@@ -20,8 +20,7 @@ DESC = load("meta.g")
 class TestRoundtrip(unittest.TestCase):
     def test_roundtrip(self):
         output = io.StringIO()
-        code = munge_asm(CODE)
-        m = Machine(code, DESC, file=output)
+        m = Machine(CODE, DESC, file=output)
         m.run()
         result = output.getvalue()
         self.assertEqual(CODE, result)

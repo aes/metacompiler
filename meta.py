@@ -5,12 +5,14 @@ TOKEN = re.compile(r"('[^']*'|\S+)")
 
 
 def tokenize(src):
+    if src.startswith("#"):
+        src = src.split('\n', 1)[1]
     return TOKEN.findall(src)
 
 
 class Machine:
     def __init__(self, code, src, file=None):
-        self.code = code
+        self.code = munge_asm(code)
         self.src = tokenize(src)
         self.file = file
 
@@ -22,7 +24,7 @@ class Machine:
 
         self.labels = {
             line[1]: i
-            for i, line in enumerate(code)
+            for i, line in enumerate(self.code)
             if line[0] == "LABEL"
         }
 
@@ -134,12 +136,10 @@ def munge_asm(asm):
 def main(args):
     try:
         with open(args[1], "r") as fh:
-            code = munge_asm(fh.read())
+            code = fh.read()
         src = "meta.g" if len(args) < 3 else args[2]
         with open(src, "r") as fh:
             src = fh.read()
-            if src.startswith("#!"):
-                src = src.split('\n', 1)[1]
     except IOError:
         print("""\
         Usage: python3 meta.py <order code file> <compiler-description>
