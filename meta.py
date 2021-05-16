@@ -9,9 +9,10 @@ def tokenize(src):
 
 
 class Machine:
-    def __init__(self, code, src):
+    def __init__(self, code, src, file=None):
         self.code = code
         self.src = tokenize(src)
+        self.file = file
 
         self.i = 0
         self.switch = False
@@ -96,7 +97,7 @@ class Machine:
         self.output = self.output.lstrip()
 
     def out(self):
-        print(self.output)
+        print(self.output, file=self.file)
         self.output = "    "
 
     def label(self, _arg):
