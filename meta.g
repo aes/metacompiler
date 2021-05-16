@@ -8,7 +8,7 @@ PROGRAM
   .,
 
 ST
-  = .ID .LABEL * '=' EX1 '.,' .OUT ( 'R' )
+  = .ID .LABEL * '=' EX1 ( '.,' / ';' ) .OUT ( 'R' )
   .,
 
 EX1

@@ -30,116 +30,123 @@ ST
     CLL EX1
     BE
     TST '.,'
+    BF L5
+L5
+    BT L6
+    TST ';'
+    BF L7
+L7
+L6
     BE
     CL 'R'
     OUT
 L4
-L5
+L8
     R
 EX1
     CLL EX2
-    BF L6
-L7
+    BF L9
+L10
     TST '/'
-    BF L8
+    BF L11
     CL 'BT '
     GN1
     OUT
     CLL EX2
     BE
-L8
-L9
-    BT L7
+L11
+L12
+    BT L10
     SET
     BE
     LB
     GN1
     OUT
-L6
-L10
+L9
+L13
     R
 EX2
     CLL EX3
-    BF L11
+    BF L14
     CL 'BF '
     GN1
     OUT
-L11
-    BT L12
+L14
+    BT L15
     CLL OUTPUT
-    BF L13
-L13
-L12
-    BF L14
-L15
-    CLL EX3
     BF L16
+L16
+L15
+    BF L17
+L18
+    CLL EX3
+    BF L19
     CL 'BE'
     OUT
-L16
-    BT L17
+L19
+    BT L20
     CLL OUTPUT
-    BF L18
-L18
-L17
-    BT L15
+    BF L21
+L21
+L20
+    BT L18
     SET
     BE
     LB
     GN1
     OUT
-L14
-L19
+L17
+L22
     R
 EX3
     ID
-    BF L20
+    BF L23
     CL 'CLL '
     CI
     OUT
-L20
-    BT L21
+L23
+    BT L24
     SR
-    BF L22
+    BF L25
     CL 'TST '
     CI
     OUT
-L22
-    BT L21
+L25
+    BT L24
     TST '.ID'
-    BF L23
+    BF L26
     CL 'ID'
     OUT
-L23
-    BT L21
+L26
+    BT L24
     TST '.NUMBER'
-    BF L24
+    BF L27
     CL 'NUM'
     OUT
-L24
-    BT L21
+L27
+    BT L24
     TST '.STRING'
-    BF L25
+    BF L28
     CL 'SR'
     OUT
-L25
-    BT L21
+L28
+    BT L24
     TST '('
-    BF L26
+    BF L29
     CLL EX1
     BE
     TST ')'
     BE
-L26
-    BT L21
+L29
+    BT L24
     TST '.EMPTY'
-    BF L27
+    BF L30
     CL 'SET'
     OUT
-L27
-    BT L21
+L30
+    BT L24
     TST '$'
-    BF L28
+    BF L31
     LB
     GN1
     OUT
@@ -150,62 +157,62 @@ L27
     OUT
     CL 'SET'
     OUT
-L28
-L21
+L31
+L24
     R
 OUTPUT
     TST '.OUT'
-    BF L29
+    BF L32
     TST '('
     BE
-L30
+L33
     CLL OUT1
-    BT L30
+    BT L33
     SET
     BE
     TST ')'
     BE
-L29
-    BT L31
+L32
+    BT L34
     TST '.LABEL'
-    BF L32
+    BF L35
     CL 'LB'
     OUT
     CLL OUT1
     BE
-L32
-L31
-    BF L33
+L35
+L34
+    BF L36
     CL 'OUT'
     OUT
-L33
-L34
+L36
+L37
     R
 OUT1
     TST '*1'
-    BF L35
+    BF L38
     CL 'GN1'
     OUT
-L35
-    BT L36
+L38
+    BT L39
     TST '*2'
-    BF L37
+    BF L40
     CL 'GN2'
     OUT
-L37
-    BT L36
+L40
+    BT L39
     TST '*'
-    BF L38
+    BF L41
     CL 'CI'
     OUT
-L38
-    BT L36
+L41
+    BT L39
     SR
-    BF L39
+    BF L42
     CL 'CL '
     CI
     OUT
+L42
 L39
-L36
     R
     END
