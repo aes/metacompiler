@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import pathlib
 import re
 
 TOKEN = re.compile(r"('[^']*'|\S+)")
@@ -135,11 +136,8 @@ def munge_asm(asm):
 
 def main(args):
     try:
-        with open(args[1], "r") as fh:
-            code = fh.read()
-        src = "meta.g" if len(args) < 3 else args[2]
-        with open(src, "r") as fh:
-            src = fh.read()
+        code = pathlib.Path(args[1]).read_text()
+        src = pathlib.Path("meta.g" if len(args) < 3 else args[2]).read_text()
     except IOError:
         print("""\
         Usage: python3 meta.py <order code file> <compiler-description>
