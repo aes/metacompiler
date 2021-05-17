@@ -8,17 +8,17 @@ PROGRAM
   ;
 
 ST
-  = .ID .LABEL * '=' EX1 ';' .OUT ( 'R' )
+  = .ID .OUT ( .LB * ) '=' EX1 ';' .OUT ( 'R' )
   ;
 
 EX1
-  = EX2 $ ( '/' .OUT ( 'BT ' *1 ) EX2 ) .LABEL *1
+  = EX2 $ ( '/' .OUT ( 'BT ' *1 ) EX2 ) .OUT ( .LB # )
   ;
 
 EX2
   = ( EX3 .OUT ( 'BF ' *1 ) / OUTPUT )
     $ ( EX3 .OUT ( 'BE' ) / OUTPUT )
-    .LABEL *1
+    .OUT ( .LB # )
   ;
 
 EX3
@@ -29,13 +29,12 @@ EX3
   / '.STRING' .OUT ( 'SR' )
   / '(' EX1 ')'
   / '.EMPTY'  .OUT ( 'SET' )
-  / '$' .LABEL *1 EX3 .OUT ( 'BT ' *1 ) .OUT ( 'SET' )
+  / '$' .OUT ( .LB # ) EX3 .OUT ( 'BT ' *1 ) .OUT ( 'SET' )
   ;
 
 OUTPUT
   = (
         '.OUT' '(' $ OUT1 ')'
-      / '.LABEL' .OUT ( 'LB' ) OUT1
     )
     .OUT ( 'OUT' )
   ;

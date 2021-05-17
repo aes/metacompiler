@@ -166,82 +166,74 @@ L30
   TST ')'
   BE
 L29
-  BT L31
-  TST '.LABEL'
-  BF L32
-  CL 'LB'
-  OUT
-  CLL OUT1
-  BE
-L32
 L31
-  BF L33
+  BF L32
   CL 'OUT'
   OUT
+L32
 L33
-L34
   R
 OUT1
   TST '*1'
-  BF L35
+  BF L34
   CL 'GN1'
   OUT
-L35
-  BT L36
+L34
+  BT L35
   TST '*2'
-  BF L37
+  BF L36
   CL 'GN2'
   OUT
-L37
-  BT L36
+L36
+  BT L35
   TST '*'
-  BF L38
+  BF L37
   CL 'CI'
   OUT
-L38
-  BT L36
+L37
+  BT L35
   SR
-  BF L39
+  BF L38
   CL 'CL '
   CI
   OUT
-L39
-  BT L36
+L38
+  BT L35
   TST '#'
-  BF L40
+  BF L39
   CL 'GN1'
   OUT
-L40
-  BT L36
+L39
+  BT L35
   TST '.NL'
-  BF L41
+  BF L40
   CL 'NL'
   OUT
-L41
-  BT L36
+L40
+  BT L35
   TST '.LB'
-  BF L42
+  BF L41
   CL 'LB'
   OUT
-L42
-  BT L36
+L41
+  BT L35
   TST '.TB'
-  BF L43
+  BF L42
   CL 'TB'
   OUT
-L43
-  BT L36
+L42
+  BT L35
   TST '.LM+'
-  BF L44
+  BF L43
   CL 'LMI'
   OUT
-L44
-  BT L36
+L43
+  BT L35
   TST '.LM-'
-  BF L45
+  BF L44
   CL 'LMD'
   OUT
-L45
-L36
+L44
+L35
   R
   END
