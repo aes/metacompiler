@@ -4,6 +4,8 @@ import re
 
 TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 
+OPS = "adr b be bf bt cll ci cl end gn1 gn2 id lb num out r set sr tst".split()
+
 
 def tokenize(src):
     if src.startswith("#"):
@@ -27,6 +29,8 @@ def assemble(asm):
     for line in code:
         if line[0] in ("ADR", "B", "BT", "BF", "CLL"):
             line[1] = labels.get(line[1])
+
+        line[0] = OPS.index(line[0].lower())
 
     return tuple(tuple(line) for line in code)
 
@@ -124,11 +128,12 @@ class Machine:
         return True
 
     def run(self):
+        ops = {i: getattr(self, o) for i, o in enumerate(OPS)}
         while 0 <= self.pc < len(self.code):
             line = self.code[self.pc]
             # print(f'(self.pc, line) = {(self.pc, line)!r}')
             self.pc += 1
-            getattr(self, line[0].lower())(*line[1:])
+            ops[line[0]](*line[1:])
 
 
 def main(args):
