@@ -8,7 +8,7 @@ from meta import Machine
 def load(path):
     with open(path, "r") as fh:
         it = fh.read()
-    if it.startswith("#!"):
+    if it.lstrip().startswith("#"):
         it = it.split('\n', 1)[1]
     return it
 
