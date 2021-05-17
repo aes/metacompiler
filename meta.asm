@@ -197,86 +197,70 @@ L29
 L31
   R
 OUT1
-  TST '*1'
-  BF L32
-  LB
-  TB
-  CL 'GN1'
-  NL
-L32
-  BT L33
-  TST '*2'
-  BF L34
-  LB
-  TB
-  CL 'GN2'
-  NL
-L34
-  BT L33
   TST '*'
-  BF L35
+  BF L32
   LB
   TB
   CL 'CI'
   NL
-L35
+L32
   BT L33
   SR
-  BF L36
+  BF L34
   LB
   TB
   CL 'CL '
   CI
   NL
-L36
+L34
   BT L33
   TST '#'
-  BF L37
+  BF L35
   LB
   TB
   CL 'GN1'
   NL
-L37
+L35
   BT L33
   TST '.NL'
-  BF L38
+  BF L36
   LB
   TB
   CL 'NL'
   NL
-L38
+L36
   BT L33
   TST '.LB'
-  BF L39
+  BF L37
   LB
   TB
   CL 'LB'
   NL
-L39
+L37
   BT L33
   TST '.TB'
-  BF L40
+  BF L38
   LB
   TB
   CL 'TB'
   NL
-L40
+L38
   BT L33
   TST '.LM+'
-  BF L41
+  BF L39
   LB
   TB
   CL 'LMI'
   NL
-L41
+L39
   BT L33
   TST '.LM-'
-  BF L42
+  BF L40
   LB
   TB
   CL 'LMD'
   NL
-L42
+L40
 L33
   R
   END
