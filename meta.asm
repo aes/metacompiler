@@ -4,6 +4,8 @@ PROGRAM
   BF L1
   ID
   BE
+  LB
+  TB
   CL 'ADR '
   CI
   OUT
@@ -14,6 +16,8 @@ L2
   BE
   TST '.END'
   BE
+  LB
+  TB
   CL 'END'
   OUT
 L1
@@ -31,6 +35,8 @@ ST
   BE
   TST ';'
   BE
+  LB
+  TB
   CL 'R'
   OUT
 L4
@@ -42,6 +48,8 @@ EX1
 L7
   TST '/'
   BF L8
+  LB
+  TB
   CL 'BT '
   GN1
   OUT
@@ -61,6 +69,8 @@ L10
 EX2
   CLL EX3
   BF L11
+  LB
+  TB
   CL 'BF '
   GN1
   OUT
@@ -74,6 +84,8 @@ L12
 L15
   CLL EX3
   BF L16
+  LB
+  TB
   CL 'BE'
   OUT
 L16
@@ -94,6 +106,8 @@ L19
 EX3
   ID
   BF L20
+  LB
+  TB
   CL 'CLL '
   CI
   OUT
@@ -101,6 +115,8 @@ L20
   BT L21
   SR
   BF L22
+  LB
+  TB
   CL 'TST '
   CI
   OUT
@@ -108,18 +124,24 @@ L22
   BT L21
   TST '.ID'
   BF L23
+  LB
+  TB
   CL 'ID'
   OUT
 L23
   BT L21
   TST '.NUMBER'
   BF L24
+  LB
+  TB
   CL 'NUM'
   OUT
 L24
   BT L21
   TST '.STRING'
   BF L25
+  LB
+  TB
   CL 'SR'
   OUT
 L25
@@ -134,6 +156,8 @@ L26
   BT L21
   TST '.EMPTY'
   BF L27
+  LB
+  TB
   CL 'SET'
   OUT
 L27
@@ -145,9 +169,13 @@ L27
   OUT
   CLL EX3
   BE
+  LB
+  TB
   CL 'BT '
   GN1
   OUT
+  LB
+  TB
   CL 'SET'
   OUT
 L28
@@ -168,6 +196,8 @@ L30
 L29
 L31
   BF L32
+  LB
+  TB
   CL 'OUT'
   OUT
 L32
@@ -176,24 +206,32 @@ L33
 OUT1
   TST '*1'
   BF L34
+  LB
+  TB
   CL 'GN1'
   OUT
 L34
   BT L35
   TST '*2'
   BF L36
+  LB
+  TB
   CL 'GN2'
   OUT
 L36
   BT L35
   TST '*'
   BF L37
+  LB
+  TB
   CL 'CI'
   OUT
 L37
   BT L35
   SR
   BF L38
+  LB
+  TB
   CL 'CL '
   CI
   OUT
@@ -201,36 +239,48 @@ L38
   BT L35
   TST '#'
   BF L39
+  LB
+  TB
   CL 'GN1'
   OUT
 L39
   BT L35
   TST '.NL'
   BF L40
+  LB
+  TB
   CL 'NL'
   OUT
 L40
   BT L35
   TST '.LB'
   BF L41
+  LB
+  TB
   CL 'LB'
   OUT
 L41
   BT L35
   TST '.TB'
   BF L42
+  LB
+  TB
   CL 'TB'
   OUT
 L42
   BT L35
   TST '.LM+'
   BF L43
+  LB
+  TB
   CL 'LMI'
   OUT
 L43
   BT L35
   TST '.LM-'
   BF L44
+  LB
+  TB
   CL 'LMD'
   OUT
 L44
