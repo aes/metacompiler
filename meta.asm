@@ -206,6 +206,42 @@ L38
   CI
   OUT
 L39
+  BT L36
+  TST '#'
+  BF L40
+  CL 'GN1'
+  OUT
+L40
+  BT L36
+  TST '.NL'
+  BF L41
+  CL 'NL'
+  OUT
+L41
+  BT L36
+  TST '.LB'
+  BF L42
+  CL 'LB'
+  OUT
+L42
+  BT L36
+  TST '.TB'
+  BF L43
+  CL 'TB'
+  OUT
+L43
+  BT L36
+  TST '.LM+'
+  BF L44
+  CL 'LMI'
+  OUT
+L44
+  BT L36
+  TST '.LM-'
+  BF L45
+  CL 'LMD'
+  OUT
+L45
 L36
   R
   END
