@@ -2,54 +2,54 @@
 .SYNTAX PROGRAM
 
 PROGRAM
-  = '.SYNTAX' .ID .OUT ( 'ADR ' * )
+  = '.SYNTAX' .ID .OUT ( .LB .TB 'ADR ' * )
     $ ST
-    '.END' .OUT ( 'END' )
+    '.END' .OUT ( .LB .TB 'END' )
   ;
 
 ST
-  = .ID .OUT ( .LB * ) '=' EX1 ';' .OUT ( 'R' )
+  = .ID .OUT ( .LB * ) '=' EX1 ';' .OUT ( .LB .TB 'R' )
   ;
 
 EX1
-  = EX2 $ ( '/' .OUT ( 'BT ' *1 ) EX2 ) .OUT ( .LB # )
+  = EX2 $ ( '/' .OUT ( .LB .TB 'BT ' *1 ) EX2 ) .OUT ( .LB # )
   ;
 
 EX2
-  = ( EX3 .OUT ( 'BF ' *1 ) / OUTPUT )
-    $ ( EX3 .OUT ( 'BE' ) / OUTPUT )
+  = ( EX3 .OUT ( .LB .TB 'BF ' *1 ) / OUTPUT )
+    $ ( EX3 .OUT ( .LB .TB 'BE' ) / OUTPUT )
     .OUT ( .LB # )
   ;
 
 EX3
-  = .ID       .OUT ( 'CLL ' * )
-  / .STRING   .OUT ( 'TST ' * )
-  / '.ID'     .OUT ( 'ID' )
-  / '.NUMBER' .OUT ( 'NUM' )
-  / '.STRING' .OUT ( 'SR' )
+  = .ID       .OUT ( .LB .TB 'CLL ' * )
+  / .STRING   .OUT ( .LB .TB 'TST ' * )
+  / '.ID'     .OUT ( .LB .TB 'ID' )
+  / '.NUMBER' .OUT ( .LB .TB 'NUM' )
+  / '.STRING' .OUT ( .LB .TB 'SR' )
   / '(' EX1 ')'
-  / '.EMPTY'  .OUT ( 'SET' )
-  / '$' .OUT ( .LB # ) EX3 .OUT ( 'BT ' *1 ) .OUT ( 'SET' )
+  / '.EMPTY'  .OUT ( .LB .TB 'SET' )
+  / '$' .OUT ( .LB # ) EX3 .OUT ( .LB .TB 'BT ' *1 ) .OUT ( .LB .TB 'SET' )
   ;
 
 OUTPUT
   = (
-        '.OUT' '(' $ OUT1 ')'
+      '.OUT' '(' $ OUT1 ')'
     )
-    .OUT ( 'OUT' )
+    .OUT ( .LB .TB 'OUT' )
   ;
 
 OUT1
-  = '*1'    .OUT ( 'GN1' )
-  / '*2'    .OUT ( 'GN2' )
-  / '*'     .OUT ( 'CI' )
-  / .STRING .OUT ( 'CL ' * )
-  / '#'     .OUT ( 'GN1' )
-  / '.NL'   .OUT ( 'NL' )
-  / '.LB'   .OUT ( 'LB' )
-  / '.TB'   .OUT ( 'TB' )
-  / '.LM+'  .OUT ( 'LMI' )
-  / '.LM-'  .OUT ( 'LMD' )
+  = '*1'    .OUT ( .LB .TB 'GN1' )
+  / '*2'    .OUT ( .LB .TB 'GN2' )
+  / '*'     .OUT ( .LB .TB 'CI' )
+  / .STRING .OUT ( .LB .TB 'CL ' * )
+  / '#'     .OUT ( .LB .TB 'GN1' )
+  / '.NL'   .OUT ( .LB .TB 'NL' )
+  / '.LB'   .OUT ( .LB .TB 'LB' )
+  / '.TB'   .OUT ( .LB .TB 'TB' )
+  / '.LM+'  .OUT ( .LB .TB 'LMI' )
+  / '.LM-'  .OUT ( .LB .TB 'LMD' )
   ;
 
 .END
