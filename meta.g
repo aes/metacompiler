@@ -2,38 +2,38 @@
 .SYNTAX PROGRAM
 
 PROGRAM
-  = '.SYNTAX' .ID .OUT ( .LB .TB 'ADR ' * .NL )
+  = '.SYNTAX' .ID .OUT ( .TB 'ADR ' * .NL )
     $ ST
-    '.END' .OUT ( .LB .TB 'END' .NL )
+    '.END' .OUT ( .TB 'END' .NL )
   ;
 
 ST
-  = .ID .OUT ( .LB * .NL ) '=' EX1 ';' .OUT ( .LB .TB 'R' .NL )
+  = .ID .OUT ( * .NL ) '=' EX1 ';' .OUT ( .TB 'R' .NL )
   ;
 
 EX1
-  = EX2 $ ( '/' .OUT ( .LB .TB 'BT ' # .NL ) EX2 ) .OUT ( .LB  # .NL )
+  = EX2 $ ( '/' .OUT ( .TB 'BT ' # .NL ) EX2 ) .OUT ( # .NL )
   ;
 
 EX2
-  = ( EX3 .OUT ( .LB .TB 'BF ' # .NL ) / OUTPUT )
-    $ ( EX3 .OUT ( .LB .TB 'BE' .NL ) / OUTPUT )
-    .OUT ( .LB # .NL )
+  = ( EX3 .OUT ( .TB 'BF ' # .NL ) / OUTPUT )
+    $ ( EX3 .OUT ( .TB 'BE' .NL ) / OUTPUT )
+    .OUT ( # .NL )
   ;
 
 EX3
-  = .ID       .OUT ( .LB .TB 'CLL ' * .NL )
-  / .STRING   .OUT ( .LB .TB 'TST ' * .NL )
-  / '.ID'     .OUT ( .LB .TB 'ID' .NL )
-  / '.NUMBER' .OUT ( .LB .TB 'NUM' .NL )
-  / '.STRING' .OUT ( .LB .TB 'SR' .NL )
+  = .ID       .OUT ( .TB 'CLL ' * .NL )
+  / .STRING   .OUT ( .TB 'TST ' * .NL )
+  / '.ID'     .OUT ( .TB 'ID' .NL )
+  / '.NUMBER' .OUT ( .TB 'NUM' .NL )
+  / '.STRING' .OUT ( .TB 'SR' .NL )
   / '(' EX1 ')'
-  / '.EMPTY'  .OUT ( .LB .TB 'SET' .NL )
+  / '.EMPTY'  .OUT ( .TB 'SET' .NL )
   / '$'
-    .OUT ( .LB # .NL )
+    .OUT ( # .NL )
     EX3
-    .OUT ( .LB .TB 'BT ' # .NL )
-    .OUT ( .LB .TB 'SET' .NL )
+    .OUT ( .TB 'BT ' # .NL )
+    .OUT ( .TB 'SET' .NL )
   ;
 
 OUTPUT
@@ -41,14 +41,14 @@ OUTPUT
   ;
 
 OUT1
-  = '*'     .OUT ( .LB .TB 'CI' .NL )
-  / .STRING .OUT ( .LB .TB 'CL ' * .NL )
-  / '#'     .OUT ( .LB .TB 'GN1' .NL )
-  / '.NL'   .OUT ( .LB .TB 'NL' .NL )
-  / '.LB'   .OUT ( .LB .TB 'LB' .NL )
-  / '.TB'   .OUT ( .LB .TB 'TB' .NL )
-  / '.LM+'  .OUT ( .LB .TB 'LMI' .NL )
-  / '.LM-'  .OUT ( .LB .TB 'LMD' .NL )
+  = '*'     .OUT ( .TB 'CI' .NL )
+  / .STRING .OUT ( .TB 'CL ' * .NL )
+  / '#'     .OUT ( .TB 'GN1' .NL )
+  / '.NL'   .OUT ( .TB 'NL' .NL )
+  / '.LB'   .OUT ( .TB 'LB' .NL )
+  / '.TB'   .OUT ( .TB 'TB' .NL )
+  / '.LM+'  .OUT ( .TB 'LMI' .NL )
+  / '.LM-'  .OUT ( .TB 'LMD' .NL )
   ;
 
 .END
