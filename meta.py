@@ -122,9 +122,6 @@ class Machine:
         print(self.output, file=self.file)
         self.output = "    "
 
-    def label(self, _arg):
-        pass
-
     def adr(self, arg):
         self.pc = arg
 
