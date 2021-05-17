@@ -18,7 +18,7 @@ def assemble(asm):
     code = []
     i = 0
     for line in asm.split("\n"):
-        if line.lstrip().startswith("#"):
+        if not line.lstrip() or line.lstrip().startswith("#"):
             continue
         if not line[:1].isspace():
             labels[line] = i
