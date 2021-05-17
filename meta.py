@@ -4,7 +4,7 @@ import re
 TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 
 OPS = (
-    "adr b be bf bt cll ci cl end gn1 gn2 id lb num out r set sr tst "
+    "adr b be bf bt cll ci cl end gn1 gn2 id lb num r set sr tst "
     "nl tb lmi lmd"
     "".split())
 
@@ -121,10 +121,6 @@ class Machine:
 
     def lb(self):
         self.output = self.output.lstrip()
-
-    def out(self):
-        print(self.output, file=self.file)
-        self.output = "  " * self.margin
 
     def adr(self, arg):
         self.pc = arg
