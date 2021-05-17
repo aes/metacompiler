@@ -4,7 +4,10 @@ import re
 
 TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 
-OPS = "adr b be bf bt cll ci cl end gn1 gn2 id lb num out r set sr tst".split()
+OPS = (
+    "adr b be bf bt cll ci cl end gn1 gn2 id lb num out r set sr tst "
+    "nl tb lmi lmd"
+    "".split())
 
 
 def tokenize(src):
@@ -47,7 +50,8 @@ class Machine:
         self.switch = False
         self.token = ""
         self.gensym = 0
-        self.output = "    "
+        self.margin = 2
+        self.output = "  " * self.margin
 
         self.pc = 0
         self.stack = [None, None, -1]
@@ -121,13 +125,26 @@ class Machine:
 
     def out(self):
         print(self.output, file=self.file)
-        self.output = "    "
+        self.output = "  " * self.margin
 
     def adr(self, arg):
         self.pc = arg
 
     def end(self):
         return True
+
+    def nl(self):
+        print(self.output, file=self.file)
+        self.output = "  " * self.margin
+
+    def tb(self):
+        self.output = "  " + self.output
+
+    def lmi(self):
+        self.margin += 1
+
+    def lmd(self):
+        self.margin -= 1
 
     def run(self):
         ops = {i: getattr(self, o) for i, o in enumerate(OPS)}
