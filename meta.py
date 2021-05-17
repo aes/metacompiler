@@ -35,6 +35,7 @@ def assemble(asm):
     return tuple(tuple(line) for line in code)
 
 
+# noinspection PyUnusedFunction
 class Machine:
     def __init__(self, code, src, file=None):
         self.code = assemble(code)
