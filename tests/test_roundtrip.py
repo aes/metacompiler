@@ -17,22 +17,19 @@ CODE = load("meta.asm")
 DESC = load("meta.g")
 
 
+def run(code, desc):
+    output = io.StringIO()
+    m = Machine(code, desc, file=output)
+    m.run()
+    return output.getvalue()
+
+
 class TestRoundtrip(unittest.TestCase):
     def test_roundtrip(self):
-        output = io.StringIO()
-        m = Machine(CODE, DESC, file=output)
-        m.run()
-        result = output.getvalue()
+        result = run(CODE, DESC)
         self.assertEqual(CODE, result)
 
     def test_second_roundtrip(self):
-        output = io.StringIO()
-        m = Machine(CODE, DESC, file=output)
-        m.run()
-        new_code = output.getvalue()
-
-        output = io.StringIO()
-        m = Machine(new_code, DESC, file=output)
-        m.run()
-        result = output.getvalue()
+        new_code = run(CODE, DESC)
+        result = run(new_code, DESC)
         self.assertEqual(new_code, result)
