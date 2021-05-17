@@ -41,9 +41,7 @@ OUTPUT
   ;
 
 OUT1
-  = '*1'    .OUT ( .LB .TB 'GN1' .NL )
-  / '*2'    .OUT ( .LB .TB 'GN2' .NL )
-  / '*'     .OUT ( .LB .TB 'CI' .NL )
+  = '*'     .OUT ( .LB .TB 'CI' .NL )
   / .STRING .OUT ( .LB .TB 'CL ' * .NL )
   / '#'     .OUT ( .LB .TB 'GN1' .NL )
   / '.NL'   .OUT ( .LB .TB 'NL' .NL )
