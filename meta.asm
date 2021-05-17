@@ -8,7 +8,7 @@ PROGRAM
   TB
   CL 'ADR '
   CI
-  OUT
+  NL
 L2
   CLL ST
   BT L2
@@ -19,7 +19,7 @@ L2
   LB
   TB
   CL 'END'
-  OUT
+  NL
 L1
 L3
   R
@@ -28,7 +28,7 @@ ST
   BF L4
   LB
   CI
-  OUT
+  NL
   TST '='
   BE
   CLL EX1
@@ -38,7 +38,7 @@ ST
   LB
   TB
   CL 'R'
-  OUT
+  NL
 L4
 L5
   R
@@ -52,7 +52,7 @@ L7
   TB
   CL 'BT '
   GN1
-  OUT
+  NL
   CLL EX2
   BE
 L8
@@ -62,7 +62,7 @@ L9
   BE
   LB
   GN1
-  OUT
+  NL
 L6
 L10
   R
@@ -73,7 +73,7 @@ EX2
   TB
   CL 'BF '
   GN1
-  OUT
+  NL
 L11
   BT L12
   CLL OUTPUT
@@ -87,7 +87,7 @@ L15
   LB
   TB
   CL 'BE'
-  OUT
+  NL
 L16
   BT L17
   CLL OUTPUT
@@ -99,7 +99,7 @@ L17
   BE
   LB
   GN1
-  OUT
+  NL
 L14
 L19
   R
@@ -110,7 +110,7 @@ EX3
   TB
   CL 'CLL '
   CI
-  OUT
+  NL
 L20
   BT L21
   SR
@@ -119,7 +119,7 @@ L20
   TB
   CL 'TST '
   CI
-  OUT
+  NL
 L22
   BT L21
   TST '.ID'
@@ -127,7 +127,7 @@ L22
   LB
   TB
   CL 'ID'
-  OUT
+  NL
 L23
   BT L21
   TST '.NUMBER'
@@ -135,7 +135,7 @@ L23
   LB
   TB
   CL 'NUM'
-  OUT
+  NL
 L24
   BT L21
   TST '.STRING'
@@ -143,7 +143,7 @@ L24
   LB
   TB
   CL 'SR'
-  OUT
+  NL
 L25
   BT L21
   TST '('
@@ -159,25 +159,25 @@ L26
   LB
   TB
   CL 'SET'
-  OUT
+  NL
 L27
   BT L21
   TST '$'
   BF L28
   LB
   GN1
-  OUT
+  NL
   CLL EX3
   BE
   LB
   TB
   CL 'BT '
   GN1
-  OUT
+  NL
   LB
   TB
   CL 'SET'
-  OUT
+  NL
 L28
 L21
   R
@@ -195,95 +195,88 @@ L30
   BE
 L29
 L31
-  BF L32
-  LB
-  TB
-  CL 'OUT'
-  OUT
-L32
-L33
   R
 OUT1
   TST '*1'
-  BF L34
+  BF L32
   LB
   TB
   CL 'GN1'
-  OUT
-L34
-  BT L35
+  NL
+L32
+  BT L33
   TST '*2'
-  BF L36
+  BF L34
   LB
   TB
   CL 'GN2'
-  OUT
-L36
-  BT L35
+  NL
+L34
+  BT L33
   TST '*'
-  BF L37
+  BF L35
   LB
   TB
   CL 'CI'
-  OUT
-L37
-  BT L35
+  NL
+L35
+  BT L33
   SR
-  BF L38
+  BF L36
   LB
   TB
   CL 'CL '
   CI
-  OUT
-L38
-  BT L35
+  NL
+L36
+  BT L33
   TST '#'
-  BF L39
+  BF L37
   LB
   TB
   CL 'GN1'
-  OUT
-L39
-  BT L35
+  NL
+L37
+  BT L33
   TST '.NL'
-  BF L40
+  BF L38
   LB
   TB
   CL 'NL'
-  OUT
-L40
-  BT L35
+  NL
+L38
+  BT L33
   TST '.LB'
-  BF L41
+  BF L39
   LB
   TB
   CL 'LB'
-  OUT
-L41
-  BT L35
+  NL
+L39
+  BT L33
   TST '.TB'
-  BF L42
+  BF L40
   LB
   TB
   CL 'TB'
-  OUT
-L42
-  BT L35
+  NL
+L40
+  BT L33
   TST '.LM+'
-  BF L43
+  BF L41
   LB
   TB
   CL 'LMI'
-  OUT
-L43
-  BT L35
+  NL
+L41
+  BT L33
   TST '.LM-'
-  BF L44
+  BF L42
   LB
   TB
   CL 'LMD'
-  OUT
-L44
-L35
+  NL
+L42
+L33
   R
   END
