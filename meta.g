@@ -45,6 +45,12 @@ OUT1
   / '*2'    .OUT ( 'GN2' )
   / '*'     .OUT ( 'CI' )
   / .STRING .OUT ( 'CL ' * )
+  / '#'     .OUT ( 'GN1' )
+  / '.NL'   .OUT ( 'NL' )
+  / '.LB'   .OUT ( 'LB' )
+  / '.TB'   .OUT ( 'TB' )
+  / '.LM+'  .OUT ( 'LMI' )
+  / '.LM-'  .OUT ( 'LMD' )
   ;
 
 .END
