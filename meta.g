@@ -12,11 +12,11 @@ ST
   ;
 
 EX1
-  = EX2 $ ( '/' .OUT ( .LB .TB 'BT ' *1 .NL ) EX2 ) .OUT ( .LB # .NL )
+  = EX2 $ ( '/' .OUT ( .LB .TB 'BT ' # .NL ) EX2 ) .OUT ( .LB  # .NL )
   ;
 
 EX2
-  = ( EX3 .OUT ( .LB .TB 'BF ' *1 .NL ) / OUTPUT )
+  = ( EX3 .OUT ( .LB .TB 'BF ' # .NL ) / OUTPUT )
     $ ( EX3 .OUT ( .LB .TB 'BE' .NL ) / OUTPUT )
     .OUT ( .LB # .NL )
   ;
@@ -32,7 +32,7 @@ EX3
   / '$'
     .OUT ( .LB # .NL )
     EX3
-    .OUT ( .LB .TB 'BT ' *1 .NL )
+    .OUT ( .LB .TB 'BT ' # .NL )
     .OUT ( .LB .TB 'SET' .NL )
   ;
 
