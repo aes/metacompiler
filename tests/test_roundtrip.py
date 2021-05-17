@@ -24,3 +24,15 @@ class TestRoundtrip(unittest.TestCase):
         m.run()
         result = output.getvalue()
         self.assertEqual(CODE, result)
+
+    def test_second_roundtrip(self):
+        output = io.StringIO()
+        m = Machine(CODE, DESC, file=output)
+        m.run()
+        new_code = output.getvalue()
+
+        output = io.StringIO()
+        m = Machine(new_code, DESC, file=output)
+        m.run()
+        result = output.getvalue()
+        self.assertEqual(new_code, result)
