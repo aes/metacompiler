@@ -49,7 +49,7 @@ class Machine:
         self.switch = False
         self.token = ""
         self.gensym = 0
-        self.margin = 2
+        self.margin = 1
         self.output = "  " * self.margin
 
         self.pc = 0
