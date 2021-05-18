@@ -43,7 +43,7 @@ OUTPUT
 OUT1
   = '*'     { .TB 'CI' .NL }
   / .STRING { .TB 'CL ' * .NL }
-  / '#'     { .TB 'GN1' .NL }
+  / '#'     { .TB 'GN' .NL }
   / '.NL'   { .TB 'NL' .NL }
   / '.LB'   { .TB 'LB' .NL }
   / '.TB'   { .TB 'TB' .NL }
