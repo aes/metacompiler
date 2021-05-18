@@ -37,8 +37,7 @@ EX3
   ;
 
 OUTPUT
-  = '.OUT' '(' $ OUT1 ')'
-  / '{' $ OUT1 '}'
+  = '{' $ OUT1 '}'
   ;
 
 OUT1

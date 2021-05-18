@@ -164,88 +164,75 @@ L28
 L21
   R
 OUTPUT
-  TST '.OUT'
+  TST '{'
   BF L29
-  TST '('
-  BE
 L30
   CLL OUT1
   BT L30
   SET
   BE
-  TST ')'
-  BE
-L29
-  BT L31
-  TST '{'
-  BF L32
-L33
-  CLL OUT1
-  BT L33
-  SET
-  BE
   TST '}'
   BE
-L32
+L29
 L31
   R
 OUT1
   TST '*'
-  BF L34
+  BF L32
   TB
   CL 'CI'
   NL
-L34
-  BT L35
+L32
+  BT L33
   SR
-  BF L36
+  BF L34
   TB
   CL 'CL '
   CI
   NL
-L36
-  BT L35
+L34
+  BT L33
   TST '#'
-  BF L37
+  BF L35
   TB
   CL 'GN1'
   NL
-L37
-  BT L35
+L35
+  BT L33
   TST '.NL'
-  BF L38
+  BF L36
   TB
   CL 'NL'
   NL
-L38
-  BT L35
+L36
+  BT L33
   TST '.LB'
-  BF L39
+  BF L37
   TB
   CL 'LB'
   NL
-L39
-  BT L35
+L37
+  BT L33
   TST '.TB'
-  BF L40
+  BF L38
   TB
   CL 'TB'
   NL
-L40
-  BT L35
+L38
+  BT L33
   TST '.LM+'
-  BF L41
+  BF L39
   TB
   CL 'LMI'
   NL
-L41
-  BT L35
+L39
+  BT L33
   TST '.LM-'
-  BF L42
+  BF L40
   TB
   CL 'LMD'
   NL
-L42
-L35
+L40
+L33
   R
   END
