@@ -33,3 +33,9 @@ class TestRoundtrip(unittest.TestCase):
         new_code = run(CODE, DESC)
         result = run(new_code, DESC)
         self.assertEqual(new_code, result)
+
+    def test_third_roundtrip(self):
+        c2 = run(CODE, DESC)
+        c3 = run(c2, DESC)
+        c4 = run(c3, DESC)
+        self.assertEqual(c3, c4)
