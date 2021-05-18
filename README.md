@@ -3,6 +3,15 @@
 This is a descent into the rabbit hole suggested by this excellent (if dated)
 [Meta-Compiler workshop](http://www.bayfronttechnologies.com/mc_workshop.html).
 
+## Running it
+
+The grammar file has a shebang that invokes `meta.py`, which has a  shebang
+that invokes python3, which in turn is (normally) interpreted by a dynamic
+linker.
+
+    ./meta.g
+
+
 ## Testing
 
 There is a round-trip test to check that it really is a meta-compiler,
