@@ -5,7 +5,7 @@ TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 
 OPS = (
     "adr b be bf bt cll ci cl end gn1 id lb num r set sr tst "
-    "nl tb lmi lmd"
+    "nl tb lmi lmd gn"
     "".split())
 
 
@@ -112,6 +112,8 @@ class Machine:
             self.gensym = self.gensym + 1
             self.stack[-2] = self.gensym
         self.output += "L{}".format(self.stack[-2])
+
+    gn = gn1
 
     def lb(self):
         self.output = self.output.lstrip()
