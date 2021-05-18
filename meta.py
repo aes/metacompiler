@@ -7,7 +7,8 @@ TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
 OPS = (
     "adr b be bf bt cll ci cl end gn id num r set sr tst "
     "nl tb lmi lmd"
-    "".split())
+    "".split()
+)
 
 
 def tokenize(src):
