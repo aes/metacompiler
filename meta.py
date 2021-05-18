@@ -112,7 +112,7 @@ class Machine:
         if not self.stack[-2]:
             self.gensym = self.gensym + 1
             self.stack[-2] = self.gensym
-        self.output += "L{}".format(self.stack[-2])
+        self.output += "{}".format(self.stack[-2])
 
     def lb(self):
         self.output = self.output.lstrip()
