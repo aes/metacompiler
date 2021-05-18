@@ -46,7 +46,7 @@ L7
   BF L8
   TB
   CL 'BT '
-  GN1
+  GN
   NL
   CLL EX2
   BE
@@ -55,7 +55,7 @@ L9
   BT L7
   SET
   BE
-  GN1
+  GN
   NL
 L6
 L10
@@ -65,7 +65,7 @@ EX2
   BF L11
   TB
   CL 'BF '
-  GN1
+  GN
   NL
 L11
   BT L12
@@ -89,7 +89,7 @@ L17
   BT L15
   SET
   BE
-  GN1
+  GN
   NL
 L14
 L19
@@ -149,13 +149,13 @@ L27
   BT L21
   TST '$'
   BF L28
-  GN1
+  GN
   NL
   CLL EX3
   BE
   TB
   CL 'BT '
-  GN1
+  GN
   NL
   TB
   CL 'SET'
@@ -195,7 +195,7 @@ L34
   TST '#'
   BF L35
   TB
-  CL 'GN1'
+  CL 'GN'
   NL
 L35
   BT L33
