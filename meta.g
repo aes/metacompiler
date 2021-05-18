@@ -45,7 +45,6 @@ OUT1
   / .STRING { .TB 'CL ' * .NL }
   / '#'     { .TB 'GN' .NL }
   / '.NL'   { .TB 'NL' .NL }
-  / '.LB'   { .TB 'LB' .NL }
   / '.TB'   { .TB 'TB' .NL }
   / '.LM+'  { .TB 'LMI' .NL }
   / '.LM-'  { .TB 'LMD' .NL }
