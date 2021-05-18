@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import pathlib
 import re
 
 TOKEN = re.compile(r"('[^']*'|\*[12]?|[()$]|[^()*' \n]+)")
@@ -144,9 +143,13 @@ class Machine:
 
 
 def main(args):
+    from pathlib import Path
+
     try:
-        code = pathlib.Path(args[1]).read_text()
-        src = pathlib.Path("meta.g" if len(args) < 3 else args[2]).read_text()
+        code = Path(args[1])
+        src = code.with_suffix(".g") if len(args) < 3 else Path(args[2])
+        code = code.read_text()
+        src = src.read_text()
     except IOError:
         print(
             """\
