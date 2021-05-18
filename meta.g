@@ -12,13 +12,13 @@ ST
   ;
 
 EX1
-  = EX2 $ ( '/' { .TB 'BT ' # .NL } EX2 ) { # .NL }
+  = EX2 $ ( '/' { .TB 'BT L' # .NL } EX2 ) { 'L' # .NL }
   ;
 
 EX2
-  = ( EX3 { .TB 'BF ' # .NL } / OUTPUT )
+  = ( EX3 { .TB 'BF L' # .NL } / OUTPUT )
     $ ( EX3 { .TB 'BE' .NL } / OUTPUT )
-    { # .NL }
+    { 'L' # .NL }
   ;
 
 EX3
@@ -30,9 +30,9 @@ EX3
   / '(' EX1 ')'
   / '.EMPTY'  { .TB 'SET' .NL }
   / '$'
-    { # .NL }
+    { 'L' # .NL }
     EX3
-    { .TB 'BT ' # .NL }
+    { .TB 'BT L' # .NL }
     { .TB 'SET' .NL }
   ;
 
