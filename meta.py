@@ -76,12 +76,12 @@ class Machine:
         self._check(lambda s: len(s) > 1 and s[0] == "'" and s[-1] == "'")
 
     def cll(self, arg):
-        self.stack.extend([None, None, self.pc])
+        self.stack.extend([None, self.pc])
         self.pc = arg
 
     def r(self):
         self.pc = self.stack[-1]
-        self.stack[-3:] = []
+        self.stack[-2:] = []
 
     def set(self):
         self.switch = True
@@ -108,10 +108,10 @@ class Machine:
         self.output += self.token
 
     def gn1(self):
-        if not self.stack[-3]:
+        if not self.stack[-2]:
             self.gensym = self.gensym + 1
-            self.stack[-3] = self.gensym
-        self.output += "L{}".format(self.stack[-3])
+            self.stack[-2] = self.gensym
+        self.output += "L{}".format(self.stack[-2])
 
     def lb(self):
         self.output = self.output.lstrip()
