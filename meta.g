@@ -2,38 +2,38 @@
 .SYNTAX PROGRAM
 
 PROGRAM
-  = '.SYNTAX' .ID .OUT ( .TB 'ADR ' * .NL )
+  = '.SYNTAX' .ID { .TB 'ADR ' * .NL }
     $ ST
-    '.END' .OUT ( .TB 'END' .NL )
+    '.END' { .TB 'END' .NL }
   ;
 
 ST
-  = .ID .OUT ( * .NL ) '=' EX1 ';' .OUT ( .TB 'R' .NL )
+  = .ID { * .NL } '=' EX1 ';' { .TB 'R' .NL }
   ;
 
 EX1
-  = EX2 $ ( '/' .OUT ( .TB 'BT ' # .NL ) EX2 ) .OUT ( # .NL )
+  = EX2 $ ( '/' { .TB 'BT ' # .NL } EX2 ) { # .NL }
   ;
 
 EX2
-  = ( EX3 .OUT ( .TB 'BF ' # .NL ) / OUTPUT )
-    $ ( EX3 .OUT ( .TB 'BE' .NL ) / OUTPUT )
-    .OUT ( # .NL )
+  = ( EX3 { .TB 'BF ' # .NL } / OUTPUT )
+    $ ( EX3 { .TB 'BE' .NL } / OUTPUT )
+    { # .NL }
   ;
 
 EX3
-  = .ID       .OUT ( .TB 'CLL ' * .NL )
-  / .STRING   .OUT ( .TB 'TST ' * .NL )
-  / '.ID'     .OUT ( .TB 'ID' .NL )
-  / '.NUMBER' .OUT ( .TB 'NUM' .NL )
-  / '.STRING' .OUT ( .TB 'SR' .NL )
+  = .ID       { .TB 'CLL ' * .NL }
+  / .STRING   { .TB 'TST ' * .NL }
+  / '.ID'     { .TB 'ID' .NL }
+  / '.NUMBER' { .TB 'NUM' .NL }
+  / '.STRING' { .TB 'SR' .NL }
   / '(' EX1 ')'
-  / '.EMPTY'  .OUT ( .TB 'SET' .NL )
+  / '.EMPTY'  { .TB 'SET' .NL }
   / '$'
-    .OUT ( # .NL )
+    { # .NL }
     EX3
-    .OUT ( .TB 'BT ' # .NL )
-    .OUT ( .TB 'SET' .NL )
+    { .TB 'BT ' # .NL }
+    { .TB 'SET' .NL }
   ;
 
 OUTPUT
@@ -42,14 +42,14 @@ OUTPUT
   ;
 
 OUT1
-  = '*'     .OUT ( .TB 'CI' .NL )
-  / .STRING .OUT ( .TB 'CL ' * .NL )
-  / '#'     .OUT ( .TB 'GN1' .NL )
-  / '.NL'   .OUT ( .TB 'NL' .NL )
-  / '.LB'   .OUT ( .TB 'LB' .NL )
-  / '.TB'   .OUT ( .TB 'TB' .NL )
-  / '.LM+'  .OUT ( .TB 'LMI' .NL )
-  / '.LM-'  .OUT ( .TB 'LMD' .NL )
+  = '*'     { .TB 'CI' .NL }
+  / .STRING { .TB 'CL ' * .NL }
+  / '#'     { .TB 'GN1' .NL }
+  / '.NL'   { .TB 'NL' .NL }
+  / '.LB'   { .TB 'LB' .NL }
+  / '.TB'   { .TB 'TB' .NL }
+  / '.LM+'  { .TB 'LMI' .NL }
+  / '.LM-'  { .TB 'LMD' .NL }
   ;
 
 .END
