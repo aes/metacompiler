@@ -9,7 +9,7 @@ def load(path):
     with open(path, "r") as fh:
         it = fh.read()
     if it.lstrip().startswith("#"):
-        it = it.split('\n', 1)[1]
+        it = it.split("\n", 1)[1]
     return it
 
 
