@@ -209,33 +209,26 @@ L35
   NL
 L36
   BT L33
-  TST '.LB'
-  BF L37
-  TB
-  CL 'LB'
-  NL
-L37
-  BT L33
   TST '.TB'
-  BF L38
+  BF L37
   TB
   CL 'TB'
   NL
-L38
+L37
   BT L33
   TST '.LM+'
-  BF L39
+  BF L38
   TB
   CL 'LMI'
   NL
-L39
+L38
   BT L33
   TST '.LM-'
-  BF L40
+  BF L39
   TB
   CL 'LMD'
   NL
-L40
+L39
 L33
   R
   END
