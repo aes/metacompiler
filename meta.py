@@ -57,13 +57,13 @@ class Machine:
         self.stack = [None, None, -1]
 
     def _check(self, pred):
-        self.switch = pred(self.src[self.i])
+        self.switch = self.i < len(self.src) and pred(self.src[self.i])
         if self.switch:
             self.token = self.src[self.i]
             self.i += 1
 
     def tst(self, arg):
-        self.switch = self.src[self.i] == arg[1:-1]
+        self.switch = self.i < len(self.src) and self.src[self.i] == arg[1:-1]
         if self.switch:
             self.i += 1
 
