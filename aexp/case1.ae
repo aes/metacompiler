@@ -1,0 +1,21 @@
+#!./aexp/aexp.py
+  lea fern
+  psh 5
+  psh 6
+  add
+  sto 
+  lea ace
+  lod fern
+  psh 5
+  mul
+  sto 
+  lea waldo
+  lod fern
+  lod ace
+  lod beta
+  neg
+  lod gamma
+  exp
+  div
+  add
+  sto 

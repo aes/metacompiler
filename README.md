@@ -11,6 +11,17 @@ linker.
 
     ./meta.g
 
+### AEXP - Arithmetic expression grammar / compiler / machine
+
+    ./aexp/aexp.g > aexp/aexp.asm
+    # actually runs ./meta.py meta.asm aexp.g
+
+    ./aexp/case1.aexp > aexp/case1.ae
+    # actually runs ./meta.py aexp/aexp.asm aexp/case1.aexp
+
+    ./aexp/case1.ae
+    # actually runs ./aexp/aexp.py aexp/case1.ae
+
 
 ## Testing
 
